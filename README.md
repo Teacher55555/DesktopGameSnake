@@ -11,9 +11,12 @@ It is classic game Snake, where i added some new ideas:
 
 More you can find in the game menu "Game Rules"
 
-Also the game has 2 Players mode. The goal is to eat more fruits first. The progress of the tail length of each player is displayed above the playing field.
+In 1 Player mode the goal is to earn more score by eating fruits and collecting coins. 
+
+Also the game has 2 Players mode. The goal is to eat more fruits first. Each player's progress is displayed in the form of a growing snake and finish line that they need to achieve.
 
 Most of the graphics i created by myself (snake, grass, rainbow, clouds). I took sounds from free sources = 2 from Mario :)
 
 Important!
 To compile, in the "Res" folder your must put there this 3 folders https://drive.google.com/open?id=0B_XwlqYy2uuOajJBQVVwSHlkSW8
+
