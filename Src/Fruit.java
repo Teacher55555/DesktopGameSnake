@@ -1,6 +1,11 @@
 
 
 import java.awt.*;
+/**
+ * Created by Igor Gridin on 05.05.17.
+ * <p>
+ * The Fruit class extends the Dot class and controls the coordinates and frequency of respawn of its elements
+ **/
 
 class Fruit extends Dot {
 

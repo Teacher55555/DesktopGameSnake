@@ -1,6 +1,11 @@
 import java.awt.*;
 import java.io.File;
 
+/**
+ * Created by Igor Gridin on 05.05.17.
+ * <p>
+ * Class, which defines font "Curlz.ttf" as a default font in the game
+ **/
 
 class MyFont {
     private Font font;

@@ -5,7 +5,7 @@ import java.awt.geom.Rectangle2D;
 /**
  * Created by Igor Gridin on 05.05.17.
  * <p>
- * This class is base abstract class for next game elements: fruits, coin, scissors, snail, stumps.
+ * This class is base abstract class for next game elements: fruit, coin, scissors, snail, stumps.
  * It's manages coordinates and frequency of respawn elements .
  **/
 
@@ -26,12 +26,12 @@ abstract public class Dot extends Thread {
     //Thus, sleepTime, count and frequency control how long the element will be displayed, not displayed, or when it will change the coordinates
 
     private Rectangle restrictedArea; // A special area where the element will not appear
-    private Snake snakePlayer1; // This is necessary to check the new coordinates of the element so that the element does not appear on the snake's body
-    private Snake snakePlayer2; // This is necessary to check the new coordinates of the element so that the element does not appear on the snake's body
+    private Snake snakePlayer1; // It is necessary to check the new coordinates of the element so that the element does not appear on the snake's body
+    private Snake snakePlayer2; // It is necessary to check the new coordinates of the element so that the element does not appear on the snake's body
     private int fruittype = 6;// This is for the random creation of fruit types: 0 - apple, 1 - cherry, 2 - banana, 3 - grapes, 4 - strawberry, 5 - kiwi, 6 = null
 
     @Override
-    public void run() { // Generate new coordinates and wait sleepTime
+    public void run() { // Generates new coordinates and wait sleepTime
         while (isAlive()) {
             try {
                 makeDot();
@@ -42,7 +42,7 @@ abstract public class Dot extends Thread {
         }
     }
 
-    Dot(Snake snakePlayer1, Snake snakePlayer2) { //receive snake bodies
+    Dot(Snake snakePlayer1, Snake snakePlayer2) { //receives snake bodies
         this.snakePlayer1 = snakePlayer1;
         this.snakePlayer2 = snakePlayer2;
         restrictedArea = new Rectangle();
@@ -81,7 +81,7 @@ abstract public class Dot extends Thread {
         return fruittype;
     } // Getter
 
-    private boolean newFruitInBodyCheck() { // Check the new coordinates of the element so that the element does not appear on the snake's body
+    private boolean newFruitInBodyCheck() { // Checks the new coordinates of the element so that the element does not appear on the snake's body
         for (Integer[] body : snakePlayer1.getBody()) {
             Rectangle2D bodyRec = new Rectangle(body[0], body[1], 30, 30);
             Rectangle2D fruitRec = new Rectangle(x, y, objectWidth, objectHight);

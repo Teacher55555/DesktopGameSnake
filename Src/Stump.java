@@ -1,9 +1,14 @@
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
+
+
+/**
+ * Created by Igor Gridin on 05.05.17.
+ * <p>
+ * The Snail class extends the Dot class and controls the coordinates and frequency of respawn of its elements
+ **/
+
 
 class Stump extends Dot {
-
     private Stump anotherStump;
 
     Stump(Snake Player1snake, Snake Player2snake, int sleeptime, int count, int frequency) {
@@ -18,14 +23,11 @@ class Stump extends Dot {
         super.frequency = frequency;
         super.count = count;
         super.setRestrictedArea(new Rectangle(0, 0, 150, 100));
-
-
     }
 
     void setAnotherStump(Stump anotherStump) {
         this.anotherStump = anotherStump;
-    } // Stumps mustn't overlay each other
-
+    } // Stumps mustn't overlap each other
 
     @Override
     boolean checkRestrictedArea() {

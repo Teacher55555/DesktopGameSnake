@@ -3,13 +3,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
+/**
+ * Created by Igor Gridin on 05.05.17.
+ * <p>
+ * The GameGUI class controls the game pad that is located above the playing field.
+ * There are next elements for 1 Player: Score, game speed and number of lives.
+ * For a game for two, each player's progress is displayed in the form of a growing snake and finish line that they need to achieve.
+ **/
+
 class GameGUI extends JPanel {
     private JLabel scorePlayer1;
-//    private JLabel scorePlayer2;
-//    private JLabel lifeLabel;
     private boolean isPlayer1game;
     private int PlayerLife;
     private int PlayerSpeed;
+    private int player1Score;
+    private int player2Score;
     private Image backgroundGUI;
     private Image lifeImage;
     private Image speedometer20;
@@ -24,36 +32,27 @@ class GameGUI extends JPanel {
     private Image bodyImagePlayer2;
     private Image tailImagePlayer2;
 
-
+    // Getters and setters
     int getPlayer1Score() {
         return player1Score;
     }
-
     void setPlayer1Score(int player1Score) {
         this.player1Score = player1Score;
     }
-
-
     void setPlayer2Score(int player2Score) {
         this.player2Score = player2Score;
     }
-
-    private int player1Score = 0;
-    private int player2Score = 0;
-
     void getPlayerLifes (int life){
         PlayerLife = life;
     }
-
     void getPlayerSpeed (int speed){
         PlayerSpeed = speed;
     }
 
+    //Constructor
     GameGUI (boolean isPlayer1Game){
         MyFont myFont = new MyFont();
-
         this.isPlayer1game = isPlayer1Game;
-
         setPreferredSize(new Dimension(1000,150));
         Color color = new Color(11, 92, 140);
         setLayout(null);
@@ -67,7 +66,7 @@ class GameGUI extends JPanel {
             speedometer100 = ImageIO.read(new File(getClass().getResource("Res/Img/Speedometer100.png").getFile()));
         } catch (Exception ex) {ex.printStackTrace();}
 
-        if (isPlayer1Game){
+        if (isPlayer1Game){ // constructor for 1 player mode
 
             try {
                 backgroundGUI = ImageIO.read(new File(getClass().getResource("Res/Img/GameGUI1Player.png").getFile()));
@@ -84,12 +83,10 @@ class GameGUI extends JPanel {
             lifeLabel.setForeground(color);
             scorePlayer1.setFont(myFont.getMyFont(30f));
             lifeLabel.setFont(myFont.getMyFont(30f));
-
             add(scorePlayer1);
             add(lifeLabel);
 
-        } else {
-
+        } else { // constructor for 2 player mode
             try {
                 backgroundGUI = ImageIO.read(new File(getClass().getResource("Res/Img/GameGUI2Players.png").getFile()));
                 headImagePlayer1 = ImageIO.read(new File(getClass().getResource("Res/Img/GreenHeadRight.png").getFile()));
@@ -99,39 +96,32 @@ class GameGUI extends JPanel {
                 bodyImagePlayer2 = ImageIO.read(new File(getClass().getResource("Res/Img/PurpleBodyHorizontal.png").getFile()));
                 tailImagePlayer2 = ImageIO.read(new File(getClass().getResource("Res/Img/PurpleTailRight.png").getFile()));
             } catch (Exception ex) {ex.printStackTrace();}
-            scorePlayer1 = new JLabel("Score: 0");
-            JLabel scorePlayer2 = new JLabel("Score: 0");
-            scorePlayer1.setFont(myFont.getMyFont(30f));
-            scorePlayer2.setFont(myFont.getMyFont(30f));
-            scorePlayer1.setForeground(color);
-            scorePlayer2.setForeground(color);
-
-            add(scorePlayer1);
-            add(scorePlayer2);
         }
-
-
     }
 
+    // draw graphics
     @Override
     protected void paintComponent(Graphics g) {
 
         super.paintComponent(g);
         g.drawImage(backgroundGUI,0,0,null);
-        scorePlayer1.setText("Score: " + player1Score);
+
+        // if 1 player mode, it will draw number of lives, speedometer and player's score.
         if (isPlayer1game) {
 
+            // Player's score
+            scorePlayer1.setText("Score: " + player1Score);
+
+            // Number of lives
             int Xcoordinate = 940;
             for (int i = 0; i < PlayerLife; i++) {
                 if (i == 5) {
                     return;
                 }
                 g.drawImage(lifeImage, Xcoordinate -= 31, 60, 25, 40, null);
-
             }
 
             //Speedometer painting
-
             Image speedImage;
             if (PlayerSpeed == 0) {
                 speedImage = speedometer20;
@@ -144,9 +134,9 @@ class GameGUI extends JPanel {
             } else {
                 speedImage = speedometer100;
             }
-
-
             g.drawImage(speedImage, 440, 25, 130, 65, null);
+
+            // if 2 player mode, it will draw the tails of snakes according to the score of their players
         } else {
 
             // Player1ScoreDraw
@@ -166,7 +156,6 @@ class GameGUI extends JPanel {
                 X2 += 20;
             }
             g.drawImage(headImagePlayer2,X2-20,40,60,60,null);
-
         }
     }
 }

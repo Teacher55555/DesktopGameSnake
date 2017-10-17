@@ -17,6 +17,7 @@ class MainMenuGUI extends JPanel {
     private JLabel infoLabel;
     private ArrayList<ImageIcon> infoList = new ArrayList<>();
 
+    // Constructor
     MainMenuGUI() {
 
         MyFont myFont = new MyFont();
@@ -87,6 +88,7 @@ class MainMenuGUI extends JPanel {
         Main.frame.getContentPane().revalidate();
         Main.frame.pack();
 
+        //Keylistener
         Main.frame.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -136,7 +138,7 @@ class MainMenuGUI extends JPanel {
                 if (key == KeyEvent.VK_ENTER && menuSelect == 4) {
                     System.exit(0);
                 }
-
+                // Main menu controller
                 if (key == KeyEvent.VK_UP) {
 
                     if (menuSelect == 2) {

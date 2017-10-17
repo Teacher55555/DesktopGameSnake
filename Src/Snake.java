@@ -19,7 +19,6 @@ public class Snake {
 
     void addBody(int x, int y) {
         body.add(new Integer[]{x, y});   // adds 1 body element to the end of the snake body
-
     }
 
     void deleteBody(int count) {    // removes body elements. If count == -1 => clear all body
@@ -90,7 +89,6 @@ public class Snake {
                 return 1;
             }
         }
-
         return result;
     }
 }

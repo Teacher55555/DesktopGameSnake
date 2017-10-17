@@ -3,6 +3,13 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
 
+/**
+ * Created by Igor Gridin on 05.05.17.
+ * <p>
+ * Music class keeps references to the sounds clips in it's methods. So any music sample can be played in any time.
+ * So it's just needs to run due method of this class.
+ **/
+
    class Music {
      private  Clip gameMusic;
      private  Clip mainMenuMusic;
