@@ -1,7 +1,7 @@
 # DesktopGameSnake
 
 Hello!
-This is my second project on my way to be a developer :)
+
 It is classic game Snake, where i added some new ideas:
 - the snake eat not only fruit, but coins (more score);
 - if the snake has collision with a stump, player will lose a life;
